@@ -19,20 +19,20 @@ def main():
     pygame.display.set_caption("Simple Character Game")
 
     # Load background image
-    bg = pygame.image.load('/Users/jamiegrantham/Downloads/pikaso-creations/freepik__expand__3427.jpeg').convert()
+    bg = pygame.image.load('freepik__expand__3427.jpeg').convert()
     bg = pygame.transform.scale(bg, (WIDTH, HEIGHT))
 
     # Load character sprite sheet
-    sprite_sheet = pygame.image.load( '/Users/jamiegrantham/Downloads/craftpix-net-622999-free-pixel-art-tiny-hero-sprites/1 Pink_Monster/Pink_Monster_Run_6.png').convert_alpha()
+    sprite_sheet = pygame.image.load( 'Pink_Monster_Run_6.png').convert_alpha()
 
     # Load enemy sprite sheet
-    enemy_sprite_sheet = pygame.image.load('/Users/jamiegrantham/Downloads/craftpix-net-424234-free-slime-sprite-sheets-pixel-art/Red_Slime/Walk.png').convert_alpha()
+    enemy_sprite_sheet = pygame.image.load('Red_Slime/Walk.png').convert_alpha()
 
     # Load attack sprite sheet
-    attack_sprite_sheet = pygame.image.load('/Users/jamiegrantham/Downloads/craftpix-net-154153-free-tiny-pixel-hero-sprites-with-melee-attacks/1/Attack2.png').convert_alpha()
+    attack_sprite_sheet = pygame.image.load('Attack2.png').convert_alpha()
 
     # Load hurt sprite sheet
-    hurt_sprite_sheet = pygame.image.load('/Users/jamiegrantham/Downloads/craftpix-net-154153-free-tiny-pixel-hero-sprites-with-melee-attacks/1/Hurt.png').convert_alpha()
+    hurt_sprite_sheet = pygame.image.load('Hurt.png').convert_alpha()
 
     # Define enemy color and size
     ENEMY_COLOR = (255, 0, 0)  # Red color
