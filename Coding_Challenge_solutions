@@ -1,0 +1,85 @@
+
+
+
+## this is the code to make the player Jump!
+
+window.addEventListener("keydown", function(event) {
+    if (event.code === "Space" && !player.isJumping) {
+        player.velocityY = -10;
+        player.isJumping = true;
+    }
+});
+
+function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    player.y += player.velocityY;
+    player.velocityY += player.gravity;
+    
+    if (player.y >= 300) { // Ground level
+        player.y = 300;
+        player.isJumping = false;
+    }
+    
+    drawPlayer();
+    requestAnimationFrame(updateGame);
+}
+
+## this is to add an enemy
+
+const enemy = { x: 600, y: 300, width: 30, height: 30, color: "black", speed: 3 };
+
+function drawEnemy() {
+    ctx.fillStyle = enemy.color;
+    ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+}
+
+function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    player.y += player.velocityY;
+    player.velocityY += player.gravity;
+    if (player.y >= 300) {
+        player.y = 300;
+        player.isJumping = false;
+    }
+    
+    enemy.x -= enemy.speed;
+    if (enemy.x < -enemy.width) enemy.x = canvas.width;
+    
+    drawPlayer();
+    drawEnemy();
+    requestAnimationFrame(updateGame);
+}
+
+## this is add score counter..
+
+let score = 0;
+
+function drawScore() {
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText("Score: " + score, 20, 30);
+}
+
+function updateGame() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    player.y += player.velocityY;
+    player.velocityY += player.gravity;
+    if (player.y >= 300) {
+        player.y = 300;
+        player.isJumping = false;
+    }
+    
+    enemy.x -= enemy.speed;
+    if (enemy.x < -enemy.width) {
+        enemy.x = canvas.width;
+        score++;
+    }
+    
+    drawPlayer();
+    drawEnemy();
+    drawScore();
+    requestAnimationFrame(updateGame);
+}
