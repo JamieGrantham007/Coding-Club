@@ -16,7 +16,11 @@
     <script>
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
-        
+
+        // Load the background image
+        const backgroundImage = new Image();
+        backgroundImage.src = 'path/to/your/image.png';
+
         // Player setup
         const player = {
             x: 50,
@@ -28,25 +32,32 @@
             gravity: 0.5,
             isJumping: false
         };
-        
+
         function drawPlayer() {
             ctx.fillStyle = player.color;
             ctx.fillRect(player.x, player.y, player.width, player.height);
         }
-        
+
         function updateGame() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw the background image
+            ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+            // Draw the player
             drawPlayer();
+
             requestAnimationFrame(updateGame);
         }
-        
-        updateGame();
-        
-        // TODO: Implement one of the following features
-        // 1. Player Jump Mechanic (spacebar makes player jump)
-        // 2. Enemy that moves across the screen
-        // 3. Score Counter when player avoids an obstacle
-        
+
+        // Start the game loop once the background image is loaded
+        backgroundImage.onload = () => {
+            updateGame();
+        };
     </script>
 </body>
 </html>
+
+
+
+
